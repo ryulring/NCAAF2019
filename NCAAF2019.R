@@ -1057,9 +1057,7 @@ AIC(model4)
 
 # Of these Models I believe Model4 is the best, so I will create a method of viewing the team rankings
 # using this model and check the assumptions
-rankings$team <- team_name
-rankings$ranking <- rep(NA, length(team_name))
-rankings$subdiv <- subdivision
+rankings <- tibble(team = team_name, ranking = rep(NA, length(team_name)), subdiv = subdivision)
 for(i in 1:length(team_name)) {
   rankings$ranking <- as.numeric(model4$coefficients[2]) *  avg_wm +
     as.numeric(model4$coefficients[4]) *  avg_opp_wm +
